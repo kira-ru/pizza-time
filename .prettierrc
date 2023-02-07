@@ -5,7 +5,7 @@
   "bracketSpacing": false,
   "printWidth": 100,
   "useTabs": false,
-  "semi": true,
+  "semi": false,
   "trailingComma": "all",
   "arrowParens": "avoid",
   "proseWrap": "never",

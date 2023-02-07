@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {ICart} from 'types/ICart';
 import {useAppDispatch} from 'hooks/useAppDispatch';
-import {addOne, removeOne} from 'store/cart/cart.slice';
+import {addOne, removeOne, removePizza} from 'store/cart/cart.slice';
 
 const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => {
     const dispatch = useAppDispatch();
@@ -68,7 +68,10 @@ const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => 
                 <b>{price * count} ₽</b>
             </div>
             <div className="cart__item-remove">
-                <div className="button button--outline button--circle">
+                <div
+                    onClick={() => dispatch(removePizza(cartId))}
+                    className="button button--outline button--circle"
+                >
                     <svg
                         width="10"
                         height="10"

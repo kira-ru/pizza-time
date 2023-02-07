@@ -1,17 +1,15 @@
-import React, {FC} from 'react';
-import {useTypedSelector} from 'hooks/useTypedSelector';
-import {CartItem} from 'components/CartItem/CartItem';
-import {EmptyCart} from 'components/EmptyCart/EmptyCart';
-import {clear} from '@testing-library/user-event/dist/clear';
-import {useAppDispatch} from 'hooks/useAppDispatch';
+import React, {FC} from 'react'
+import {useTypedSelector} from 'hooks/useTypedSelector'
+import {CartItem} from 'components/CartItem/CartItem'
+import {EmptyCart} from 'components/EmptyCart/EmptyCart'
+import {Link} from 'react-router-dom'
 
 const CartPage: FC = () => {
-    const cartItems = useTypedSelector(state => Object.values(state.cart.items));
-    const totalPrice = useTypedSelector(state => state.cart.totalPrice);
-    const totalCount = useTypedSelector(state => state.cart.totalCount);
-    const dispatch = useAppDispatch();
+    const cartItems = useTypedSelector(state => Object.values(state.cart.items))
+    const totalPrice = useTypedSelector(state => state.cart.totalPrice)
+    const totalCount = useTypedSelector(state => state.cart.totalCount)
 
-    if (!totalCount) return <EmptyCart />;
+    if (!cartItems) return <EmptyCart />
 
     return (
         <div className="container container--cart">
@@ -49,7 +47,8 @@ const CartPage: FC = () => {
                         </svg>
                         Корзина
                     </h2>
-                    <div onClick={() => dispatch(clear())} className="cart__clear">
+
+                    <div className="cart__clear">
                         <svg
                             width="20"
                             height="20"
@@ -105,7 +104,7 @@ const CartPage: FC = () => {
                         </span>
                     </div>
                     <div className="cart__bottom-buttons">
-                        <a className="button button--outline button--add go-back-btn">
+                        <Link to="/" className="button button--outline button--add go-back-btn">
                             <svg
                                 width="8"
                                 height="14"
@@ -123,7 +122,7 @@ const CartPage: FC = () => {
                             </svg>
 
                             <span>Вернуться назад</span>
-                        </a>
+                        </Link>
                         <div className="button pay-btn">
                             <span>Оплатить сейчас</span>
                         </div>
@@ -131,7 +130,7 @@ const CartPage: FC = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export {CartPage};
+export {CartPage}
