@@ -1,23 +1,26 @@
 import React, {FC} from 'react'
 
 import {CATEGORIES} from 'constants/app'
-import {useAppDispatch} from 'hooks/useAppDispatch'
 import {setCategory} from 'store/filter/filter.slice'
-import {useSearchParams} from 'react-router-dom'
+import {URLSearchParamsInit} from 'react-router-dom'
+import {useActions} from 'hooks/useActions'
 
 interface CategoriesProps {
+    setSearchParams: (
+        nextInit: URLSearchParamsInit | ((prev: URLSearchParams) => URLSearchParamsInit),
+    ) => void
     activeCategory: number
 }
 
-const Categories: FC<CategoriesProps> = ({activeCategory}) => {
-    const dispatch = useAppDispatch()
-    const [_, setSearchParams] = useSearchParams()
+export const Categories: FC<CategoriesProps> = ({activeCategory, setSearchParams}) => {
+    const actions = useActions({setCategory})
 
     const clickHandler = (id: number) => {
-        dispatch(setCategory(id))
-        setSearchParams(searchParams => {
-            searchParams.set('category', String(id))
-            return searchParams
+        actions.setCategory(id)
+
+        setSearchParams(prevParams => {
+            prevParams.set('category', String(id))
+            return prevParams
         })
     }
 
@@ -37,5 +40,3 @@ const Categories: FC<CategoriesProps> = ({activeCategory}) => {
         </div>
     )
 }
-
-export {Categories}

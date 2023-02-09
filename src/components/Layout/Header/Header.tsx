@@ -1,10 +1,9 @@
 import React, {FC} from 'react'
 import logo from 'assets/img/pizza-logo.png'
 import {Link} from 'react-router-dom'
-import {Search} from 'components/Search/Search'
-import {Cart} from 'components/Cart/Cart'
+import {Cart} from 'components/Layout/Header/Cart'
 
-const Header: FC = () => {
+export const Header: FC = () => {
     return (
         <div className="header">
             <div className="container">
@@ -18,11 +17,8 @@ const Header: FC = () => {
                     </div>
                 </Link>
 
-                <Search />
                 <Cart />
             </div>
         </div>
     )
 }
-
-export {Header}

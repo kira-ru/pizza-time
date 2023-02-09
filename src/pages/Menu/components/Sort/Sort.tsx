@@ -1,27 +1,33 @@
-import React, {FC, memo, useEffect, useRef, useState} from 'react'
+import React, {FC, useEffect, useRef, useState} from 'react'
 import {SORT_VALUES} from 'constants/app'
-import {useAppDispatch} from 'hooks/useAppDispatch'
 import {setSortParams} from 'store/filter/filter.slice'
 import {SortType} from 'store/filter/filter.types'
-import {useSearchParams} from 'react-router-dom'
+import {useActions} from 'hooks/useActions'
+import {useWhyDidYouUpdate} from 'ahooks'
+import {URLSearchParamsInit} from 'react-router-dom'
 
 interface SortProps {
+    setSearchParams: (
+        nextInit: URLSearchParamsInit | ((prev: URLSearchParams) => URLSearchParamsInit),
+    ) => void
     sortParams: SortType
 }
 
-const Sort: FC<SortProps> = memo(({sortParams}) => {
-    const [_, setSearchParams] = useSearchParams()
+export const Sort: FC<SortProps> = ({sortParams, setSearchParams}) => {
+    const actions = useActions({setSortParams})
     const sortRef = useRef<HTMLDivElement>(null)
     const [isVisible, setIsVisible] = useState<boolean>(false)
-    const dispatch = useAppDispatch()
+
+    useWhyDidYouUpdate('sort', {sortParams})
 
     const clickHandler = (sortParam: SortType) => {
-        dispatch(setSortParams(sortParam))
+        actions.setSortParams(sortParam)
 
-        setSearchParams(searchParams => {
-            searchParams.set('sortBy', sortParam.queryParamName)
-            return searchParams
+        setSearchParams(prevParams => {
+            prevParams.set('sortBy', sortParam.queryParamName)
+            return prevParams
         })
+
         setIsVisible(!isVisible)
     }
 
@@ -78,6 +84,4 @@ const Sort: FC<SortProps> = memo(({sortParams}) => {
             )}
         </div>
     )
-})
-
-export {Sort}
+}

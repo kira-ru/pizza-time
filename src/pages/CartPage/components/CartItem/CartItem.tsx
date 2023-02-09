@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
-import {ICart} from 'types/ICart';
-import {useAppDispatch} from 'hooks/useAppDispatch';
-import {addOne, removeOne, removePizza} from 'store/cart/cart.slice';
+import React, {FC} from 'react'
+import {ICart} from 'types/ICart'
+import {addOne, removeOne, removePizza} from 'store/cart/cart.slice'
+import {useActions} from 'hooks/useActions'
 
-const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => {
-    const dispatch = useAppDispatch();
+export const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => {
+    const actions = useActions({addOne, removeOne, removePizza})
+    const cartId = `${type}-${size}-${id}`
 
-    const cartId = `${type}-${size}-${id}`;
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -21,7 +21,7 @@ const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => 
             <div className="cart__item-count">
                 <button
                     disabled={count === 1}
-                    onClick={() => dispatch(removeOne(cartId))}
+                    onClick={() => actions.removeOne(cartId)}
                     className="button button--outline button--circle cart__item-count-minus"
                 >
                     <svg
@@ -43,7 +43,7 @@ const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => 
                 </button>
                 <b>{count}</b>
                 <div
-                    onClick={() => dispatch(addOne(cartId))}
+                    onClick={() => actions.addOne(cartId)}
                     className="button button--outline button--circle cart__item-count-plus"
                 >
                     <svg
@@ -69,7 +69,7 @@ const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => 
             </div>
             <div className="cart__item-remove">
                 <div
-                    onClick={() => dispatch(removePizza(cartId))}
+                    onClick={() => actions.removePizza(cartId)}
                     className="button button--outline button--circle"
                 >
                     <svg
@@ -91,7 +91,5 @@ const CartItem: FC<ICart> = ({id, price, count, type, name, imageUrl, size}) => 
                 </div>
             </div>
         </div>
-    );
-};
-
-export {CartItem};
+    )
+}

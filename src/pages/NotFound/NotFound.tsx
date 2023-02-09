@@ -1,13 +1,13 @@
-import React, {FC} from 'react'
+import React from 'react'
 import styles from 'components/Error/error.module.scss'
 
-export const Error: FC = () => {
+export const NotFound = () => {
     return (
         <div className={styles.wrapper}>
             <h1>
                 <span>😕</span>
                 <br />
-                Похоже произошла ошибка
+                Такой страницы не существуют
             </h1>
         </div>
     )

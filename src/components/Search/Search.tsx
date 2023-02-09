@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react'
 import styles from './search.module.scss'
 
-const Search: FC = () => {
+export const Search: FC = () => {
     const [value, setValue] = useState<string>('')
 
     return (
@@ -59,5 +59,3 @@ const Search: FC = () => {
         </div>
     )
 }
-
-export {Search}

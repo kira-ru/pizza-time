@@ -8,7 +8,7 @@ import {useTypedSelector} from 'hooks/useTypedSelector'
 // }
 
 // const CartPage: FC<CartProps> = ({totalPrice, totalCount}) => {
-const Cart: FC = memo(() => {
+export const Cart: FC = memo(() => {
     const {items, totalPrice} = useTypedSelector(state => state.cart)
     console.log('render cart header')
     const totalItems = Object.keys(items).length
@@ -52,5 +52,3 @@ const Cart: FC = memo(() => {
         </div>
     )
 })
-
-export {Cart}

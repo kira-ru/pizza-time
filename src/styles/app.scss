@@ -5,7 +5,7 @@
 @import './components/all.scss';
 
 body {
-  background-color: var(--background);
+  background-color: $background;
 }
 
 .wrapper {
@@ -40,7 +40,7 @@ body {
 }
 
 .container {
-  width: var(--container-width);
+  width: $container-width;
   margin: 0 auto;
 
   &--cart {
@@ -73,7 +73,7 @@ body {
       margin-right: 10px;
 
       path {
-        stroke: var(--black);
+        stroke: $black;
         stroke-width: 1.9;
       }
     }
@@ -95,7 +95,7 @@ body {
     span,
     svg,
     path {
-      transition: all var(--duration) ease-in-out;
+      transition: all $duration ease-in-out;
     }
 
     &:hover {
@@ -119,7 +119,7 @@ body {
   &__item {
     display: flex;
     width: 100%;
-    border-top: 1px solid var(--gray-line);
+    border-top: 1px solid $gray-line;
     padding-top: 30px;
     margin-top: 30px;
 
@@ -193,14 +193,14 @@ body {
       width: 4%;
 
       .button {
-        border-color: darken($color: var(--gray-line), $amount: 10);
+        border-color: darken($color: $gray-line, $amount: 10);
       }
 
       svg {
         transform: rotate(45deg);
 
         path {
-          fill: darken($color: var(--gray-line), $amount: 15);
+          fill: darken($color: $gray-line, $amount: 15);
         }
       }
 
@@ -213,8 +213,8 @@ body {
 
         &:hover,
         &:active {
-          border-color: darken($color: var(--gray-line), $amount: 80);
-          background-color: darken($color: var(--gray-line), $amount: 80);
+          border-color: darken($color: $gray-line, $amount: 80);
+          background-color: darken($color: $gray-line, $amount: 80);
         }
       }
     }
@@ -232,7 +232,7 @@ body {
 
         &:last-of-type {
           b {
-            color: var(--orange);
+            color: $orange;
           }
         }
       }
@@ -249,19 +249,19 @@ body {
         justify-content: center;
         width: 210px;
 
-        border-color: darken($color: var(--gray-line), $amount: 10);
+        border-color: darken($color: $gray-line, $amount: 10);
 
         span {
-          color: darken($color: var(--gray-line), $amount: 20);
+          color: darken($color: $gray-line, $amount: 20);
           font-weight: 500;
         }
 
         &:hover {
-          background-color: darken($color: var(--gray-line), $amount: 90);
-          border-color: darken($color: var(--gray-line), $amount: 90);
+          background-color: darken($color: $gray-line, $amount: 90);
+          border-color: darken($color: $gray-line, $amount: 90);
 
           span {
-            color: var(--gray-line);
+            color: $gray-line;
           }
         }
 
