@@ -1,7 +1,8 @@
 import React, {FC} from 'react'
 // @ts-ignore
-import styles from './miniloader.module.css'
 import cn from 'classnames'
+// @ts-ignore
+import styles from './miniloader.module.css'
 
 interface MiniLoaderProps {
     classes?: React.CSSProperties

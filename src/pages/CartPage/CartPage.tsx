@@ -14,7 +14,7 @@ export const CartPage: FC = () => {
 
     return (
         <div className="container container--cart">
-            <div className="cart">
+            <div data-testid="cart" className="cart">
                 <CartHeader />
 
                 <div className="cart__items">

@@ -1,9 +1,11 @@
 import React, {FC} from 'react'
 import logo from 'assets/img/pizza-logo.png'
-import {Link} from 'react-router-dom'
-import {Cart} from 'components/Layout/Header/Cart'
+import {Link, useLocation} from 'react-router-dom'
+import {Cart} from 'components/Layout/Header/Cart/Cart'
 
 export const Header: FC = () => {
+    const location = useLocation()
+
     return (
         <div className="header">
             <div className="container">

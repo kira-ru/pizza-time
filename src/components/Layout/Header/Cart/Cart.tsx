@@ -2,20 +2,13 @@ import React, {FC, memo} from 'react'
 import {Link} from 'react-router-dom'
 import {useTypedSelector} from 'hooks/useTypedSelector'
 
-// interface CartProps {
-//     totalPrice: number,
-//     totalCount: number
-// }
-
-// const CartPage: FC<CartProps> = ({totalPrice, totalCount}) => {
 export const Cart: FC = memo(() => {
-    const {items, totalPrice} = useTypedSelector(state => state.cart)
-    console.log('render cart header')
-    const totalItems = Object.keys(items).length
+    const totalCount = useTypedSelector(state => state.cart.totalCount)
+    const totalPrice = useTypedSelector(state => state.cart.totalPrice)
 
     return (
         <div className="header__cart">
-            <Link className="button button--cart" to="/cart">
+            <Link data-testid="cart" className="button button--cart" to="/cart">
                 <span>{totalPrice} руб.</span>
                 <div className="button__delimiter"></div>
                 <svg
@@ -47,7 +40,7 @@ export const Cart: FC = memo(() => {
                         strokeLinejoin="round"
                     />
                 </svg>
-                <span>{totalItems}</span>
+                <span>{totalCount}</span>
             </Link>
         </div>
     )

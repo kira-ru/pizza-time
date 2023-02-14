@@ -1,9 +1,8 @@
 import React, {FC} from 'react'
-
-import {CATEGORIES} from 'constants/app'
 import {setCategory} from 'store/filter/filter.slice'
 import {URLSearchParamsInit} from 'react-router-dom'
 import {useActions} from 'hooks/useActions'
+import {CATEGORIES} from 'constants/app'
 
 interface CategoriesProps {
     setSearchParams: (

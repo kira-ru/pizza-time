@@ -61,7 +61,9 @@ export const Sort: FC<SortProps> = ({sortParams, setSearchParams}) => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setIsVisible(!isVisible)}>{sortParams.queryParamName}</span>
+                <span data-testid="sortBy" onClick={() => setIsVisible(!isVisible)}>
+                    {sortParams.name}
+                </span>
             </div>
             {isVisible && (
                 <div className="sort__popup">
@@ -69,6 +71,7 @@ export const Sort: FC<SortProps> = ({sortParams, setSearchParams}) => {
                         {SORT_VALUES.map(param => (
                             <li
                                 key={param.queryParamName}
+                                data-testid={param.name}
                                 className={
                                     param.queryParamName === sortParams.queryParamName
                                         ? 'active'
@@ -76,7 +79,7 @@ export const Sort: FC<SortProps> = ({sortParams, setSearchParams}) => {
                                 }
                                 onClick={() => clickHandler(param)}
                             >
-                                {param.queryParamName}
+                                {param.name}
                             </li>
                         ))}
                     </ul>

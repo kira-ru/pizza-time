@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/app.scss'
+import 'styles/app.scss'
 
 import {Menu} from 'pages/Menu/Menu'
 import {Route, Routes} from 'react-router-dom'

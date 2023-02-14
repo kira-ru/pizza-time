@@ -44,7 +44,9 @@ export const Menu: FC = () => {
                 <Categories activeCategory={activeCategory} setSearchParams={setSearchParams} />
             </div>
 
-            <h2 className="content__title">Все пиццы</h2>
+            <h2 data-testid="pizzas page" className="content__title">
+                Все пиццы
+            </h2>
             <div className="content__items">{isLoading ? pizzasSkeleton : pizzas}</div>
         </>
     )

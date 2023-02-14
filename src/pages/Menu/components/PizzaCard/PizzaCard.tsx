@@ -45,7 +45,7 @@ export const PizzaCard: FC<IPizza> = ({name, price, imageUrl, type, id, size}) =
 
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <div
+                <button
                     onClick={() =>
                         actions.addItemToCart({
                             id,
@@ -73,7 +73,7 @@ export const PizzaCard: FC<IPizza> = ({name, price, imageUrl, type, id, size}) =
                     </svg>
                     <span>Добавить</span>
                     {numberPizzasInCart && <i>{numberPizzasInCart}</i>}
-                </div>
+                </button>
             </div>
         </div>
     )
