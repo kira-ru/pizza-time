@@ -7,6 +7,7 @@ const init: PizzasState = {
     items: [],
     isLoading: false,
     isError: false,
+    isSuccess: false,
 }
 
 export const pizzaSlice = createSlice({
@@ -16,15 +17,18 @@ export const pizzaSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(fetchPizzas.pending, state => {
             state.isLoading = true
+            state.isSuccess = false
         })
         builder.addCase(fetchPizzas.fulfilled, (state, action: PayloadAction<IPizza[]>) => {
             state.isLoading = false
             state.isError = false
+            state.isSuccess = true
             state.items = action.payload
         })
         builder.addCase(fetchPizzas.rejected, state => {
             state.isError = true
             state.isLoading = false
+            state.isSuccess = false
         })
     },
 })

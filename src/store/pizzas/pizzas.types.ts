@@ -1,7 +1,8 @@
-import { IPizza } from 'types/IPizza';
+import {IPizza} from 'types/IPizza'
 
 export interface PizzasState {
-	items: IPizza[];
-	isLoading: boolean;
-	isError: boolean;
+    items: IPizza[]
+    isLoading: boolean
+    isError: boolean
+    isSuccess: boolean
 }
